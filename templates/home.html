@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div id="brandname">
+                HPAM - Machine Learning
+            </div>
+            <h2>Text Classification</h2>
+
+        </div>
+    </header>
+
+    <div class="ml-container">
+
+        <form action="{{ url_for('predict')}}" method="POST">
+            <p>Enter your text here</p>
+            <!-- <input type="text" name="comment"/> -->
+            <textarea name="message" rows="4" cols="50"></textarea>
+            <br />
+
+            <input type="submit" class="btn-info" value="predict">
+
+        </form>
+
+    </div>
+
+    <br>
+    {% if prediction == 1%}
+	<text style="color:red;">Spam</text>
+	{% elif prediction == 0%}
+	<text style="color:blue;">Not a Spam</text>
+	{% endif %}
+
+</body>
+
+</html>
